@@ -31,6 +31,7 @@ ENCODER_MODE_SINCOS                      = 2
 ENCODER_MODE_SPI_ABS_CUI                 = 256
 ENCODER_MODE_SPI_ABS_AMS                 = 257
 ENCODER_MODE_SPI_ABS_AEAT                = 258
+ENCODER_MODE_SPI_ABS_RLS                 = 259
 
 # ODrive.Controller.ControlMode
 CONTROL_MODE_VOLTAGE_CONTROL             = 0
@@ -50,8 +51,10 @@ INPUT_MODE_MIRROR                        = 7
 
 # ODrive.Motor.MotorType
 MOTOR_TYPE_HIGH_CURRENT                  = 0
+MOTOR_TYPE_LOW_CURRENT                   = 1
 MOTOR_TYPE_GIMBAL                        = 2
 MOTOR_TYPE_ACIM                          = 3
+MOTOR_TYPE_BRUSHED                       = 4
 
 # ODrive.Can.Error
 CAN_ERROR_NONE                           = 0x00000000
