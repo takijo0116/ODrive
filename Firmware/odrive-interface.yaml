@@ -93,7 +93,7 @@ interfaces:
               Some baudrates will have a small timing error due to hardware limitations.
 
               Here's an (incomplete) list of baudrates for ODrive v3.x:
-              
+
                 Configured  | Actual        | Error [%]
                -------------|---------------|-----------
                 1.2 KBps    | 1.2 KBps      | 0
@@ -143,12 +143,12 @@ interfaces:
               If enabled, if the measured DC voltage exceeds `dc_bus_overvoltage_ramp_start`,
               the ODrive will sink more power than usual into the the brake resistor
               in an attempt to bring the voltage down again.
-              
+
               The brake duty cycle is increased by the following amount:
 
                * `vbus_voltage` == `dc_bus_overvoltage_ramp_start`  =>  brake_duty_cycle += 0%
                * `vbus_voltage` == `dc_bus_overvoltage_ramp_end`  =>  brake_duty_cycle += 100%
-              
+
               Remarks:
                - This feature is active even when all motors are disarmed.
                - This feature is disabled if `brake_resistance` is non-positive.
@@ -182,12 +182,12 @@ interfaces:
           gpio3_analog_mapping: {type: Endpoint, c_name: 'analog_mappings[2]'}
           gpio4_analog_mapping: {type: Endpoint, c_name: 'analog_mappings[3]'}
       user_config_loaded: readonly bool
-            
+
       axis0: {type: Axis, c_name: get_axis(0)}
       axis1: {type: Axis, c_name: get_axis(1)}
       can: {type: Can, c_name: get_can()}
       test_property: uint32
-        
+
     functions:
       test_function: {in: {delta: int32}, out: {cnt: int32}}
       get_oscilloscope_val: {in: {index: uint32}, out: {val: float32}}
@@ -405,10 +405,10 @@ interfaces:
       config:
         c_is_class: False
         attributes:
-          temp_limit_lower: 
+          temp_limit_lower:
             type: float32
             doc: The lower limit when the controller starts limiting current.
-          temp_limit_upper: 
+          temp_limit_upper:
             type: float32
             doc: The upper limit when current limit reaches 0 Amps and an over temperature error is triggered.
           enabled: {type: bool, doc: Whether this thermistor is enabled. }
@@ -426,10 +426,10 @@ interfaces:
           poly_coefficient_1: {type: float32, c_name: 'thermistor_poly_coeffs[1]'}
           poly_coefficient_2: {type: float32, c_name: 'thermistor_poly_coeffs[2]'}
           poly_coefficient_3: {type: float32, c_name: 'thermistor_poly_coeffs[3]'}
-          temp_limit_lower: 
+          temp_limit_lower:
             type: float32
             doc: The lower limit when the controller starts limiting current.
-          temp_limit_upper: 
+          temp_limit_upper:
             type: float32
             doc: The upper limit when current limit reaches 0 Amps and an over temperature error is triggered.
           enabled: {type: bool, doc: Whether this thermistor is enabled. }
@@ -629,12 +629,12 @@ interfaces:
   ODrive.Controller:
     c_is_class: True
     attributes:
-      error: 
+      error:
         nullflag: None
         flags:
           Overspeed:
             doc: |
-              Try increasing `config.vel_limit`. The default of 2 turns per second 
+              Try increasing `config.vel_limit`. The default of 2 turns per second
               gives a motor speed of only 120 RPM. Note: Even if
               you do not commanded your motor to exceed `config.vel_limit`
               sudden changes in the load placed on a motor may cause this speed
@@ -924,7 +924,7 @@ valuetypes:
     nullflag: None
     flags:
       OverTemp:
-        doc: The thermistor temperature upper limit was exceeded. 
+        doc: The thermistor temperature upper limit was exceeded.
 
   ODrive.Encoder.Mode:
     values:
@@ -1051,6 +1051,7 @@ valuetypes:
   ODrive.Motor.MotorType:
     values:
       HighCurrent:
-      #LowCurrent: # not implemented
+      LowCurrent: # not implemented
       Gimbal: {value: 2}
       Acim:
+      Brushed: {value: 4}
